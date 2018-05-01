@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	
+	<constant name="struts.multipart.maxSize" value="55000000000000"/>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <package name="upload" namespace="/" extends="struts-default">
+    	<!-- éªè¯ç¨æ·ç»å½æ¦æªå¨ -->
+    	<interceptors>
+    	<interceptor name="loginInterceptor" class="cn.test.action.CheckInterceptor">
+    		
+    	</interceptor>
+    	</interceptors>
+   		<action name="fileUpload" class="cn.test.action.FileUploadAction">
+			<result name="success">/WEB-INF/success2.jsp</result>
+			<result name="input">/WEB-INF/fileUpload.jsp</result>
+			<!-- <interceptor-ref name="fileUpload">
+				<param name="maximumSize">52428800000000</param>
+			</interceptor-ref>		 -->
+			</action>
+			<action name="loginAction" class="cn.test.action.loginAction">
+				<result name="success">/WEB-INF/fileUpload.jsp</result>
+				<result name="error">/WEB-INF/login.jsp</result>
+			</action>
+			<!-- <action>
+				<result name="loginAction">/WEB-INF/fileUpload.jsp</result>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+			</action> -->
+			<action name="backFisrtWeb" class="cn.test.action.backFisrtWeb">
+				<result name="success">/WEB-INF/fileUpload.jsp</result>
+			</action>	
+		<!-- 	<action name="checkFileType" class="cn.test.action.CheckFileType">
+				<result name="success">/WEB-INF/fileUploadResult.jsp</result>
+			</action>	 -->
+    		
+    </package>
+    
+    
+    <package name="Down" namespace="/" extends="struts-default">
+    
+   		<action name="download" class="cn.test.action.DownloadAction">
+   			<!-- <result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-powerpoint/*.txt</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param> ä¸è½½ä¸æ¥çåå­  ãå¦æä¸å è¿ä¸è¡ï¼æä»¶å°±ä¼æ¾ä¸å° 
+				<param name="inputName">downloadFile</param> 
+			</result>	 -->
+			<result name="success">/WEB-INF/fileUploadResult.jsp</result>
+		</action>	
+   		<action name="download2" class="cn.test.action.DownloadAction">
+			<result name="success" type="stream">
+			<!-- 	<param name="contentType">application/vnd.ms-powerpoint/*.txt</param> -->
+				<param name="contentDisposition">attachment;filename="${fileName2}"</param> <!-- ä¸è½½ä¸æ¥çåå­  ãå¦æä¸å è¿ä¸è¡ï¼æä»¶å°±ä¼æ¾ä¸å°  -->
+				<param name="inputName">downloadFile</param> 
+			</result>	
+			
+		</action>
+		<action name="show" class="cn.test.action.ShowWallPaperAction">
+   			
+			<result name="success">/WEB-INF/wallPaper.jsp</result>
+		</action>		
+		<action name="manage" class="cn.test.action.DownloadAction">
+   			
+			<result name="success">/WEB-INF/fileManage.jsp</result>
+		</action>		
+   		<action name="showWallpaper" class="cn.test.action.ShowWallPaperAction">
+			<result name="success" type="stream">
+			<!-- 	<param name="contentType">application/vnd.ms-powerpoint/*.txt</param> -->
+				<param name="contentDisposition">attachment;filename="${fileName3}"</param> <!-- ä¸è½½ä¸æ¥çåå­  ãå¦æä¸å è¿ä¸è¡ï¼æä»¶å°±ä¼æ¾ä¸å°  -->
+				<param name="inputName">downloadFile</param> 
+				
+			</result>	
+			
+		</action>	
+   		<action name="delete" class="cn.test.action.FileDeleteAction">
+			<!--  <result name="success">
+				<param name="contentType">application/vnd.ms-powerpoint/*.txt</param>
+				<param name="contentDisposition">attachment;filename="${fileName2}"</param> 
+				<param name="inputName">downloadFile</param> 
+				
+			</result>	  -->
+			 <result name="success">/WEB-INF/success3.jsp</result>
+			
+		</action>
+		
+   
+    </package>
+    
+  
+
+</struts>
