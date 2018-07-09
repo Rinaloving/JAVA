@@ -6,61 +6,83 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link type="text/css" href="styles/mywebsite.css" rel="stylesheet"/>
-<title>主页面</title>
-<script type="text/javascript" src="styles/mywebsite.js">
-  	
-  </script>
+  <link type="text/css" href="styles/bootstrap.min.css" rel="stylesheet"/>
+  <link type="text/css" href="styles/fileinput.min.css" rel="stylesheet"/>
+  <script type="text/javascript" src="styles/mywebsite.js"></script>
+  	<script src="styles/jquery-3.1.0.min.js"></script>
+	<script src="styles/bootstrap.min.js"></script>
+	<script src="styles/zh.js"></script>
+	<script src="styles/fileinput.js"></script>
+<title>文件下载表</title>
 </head>
-<body style="background-color:#D1EEEE;">
+<body>
 	<%-- 上传文件名：${uploadFileFileName } <br>
 	上传文件类型：${uploadFileContentType } <br>
 	为什么： ${name }<br>
 	下载文件名：${fileName }<br>
 	下载文件路径：${realFilePath }<br> --%>
 	<%-- 下载文件集合：${list }<br> --%>
-
-	<header style=" width:1600px;height:110px; border:0px;background:#00BFFF;"><img src="logo/logo2.jpg" style="margin-top:10px;"><span style="margin-right: 200px;margin-top:12px;font-size: 40px;  float: right; " class="title">文件下载列表</span></header>
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">文件下载</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="backFisrtWeb">返回首页</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="backLoginWeb">注销 <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 	
-	<c:forEach items="${list }" var="fileName2" varStatus="status">
-	<div style="width:1600px;height:440px;">
-	<ul class="ul">
-		<!-- fileName2.substring(fileName2.lastIndexOf('.')+1)== 'txt' -->
-		<%-- <a href="download"><li>${fileName}</li></a> --%>
-		
-		<%-- <a href="download2?fileName="${fileName}" target="_blank"><li>${fileName}</li></a> --%>
-		<!-- 超出div框强制自动换行 word-wrap:break-word;word-break:break-all;-->
-		
-<%-- 		<div class="fileShow" style="background-color:#00E5EE; "><a onClick="return false;" href="upload/${fileName2}" style="text-decoration:none;color:snow;" ><img name="fileTypeName" alt="${fileName2}" src="upload/${fileName2}"></a><li class="li"></li></div> --%>
-		<%--  <c:if test="${status.count%2==0}">
-			
-			<div class="fileShow" style="background-color:#00E5EE; "><a onClick="return false;" href="upload/${fileName2}" style="text-decoration:none;color:snow;" ><img name="fileTypeName" alt="${fileName2}" src="upload/${fileName2}"></a><li class="li"></li></div>
-			<form action="download2" method="get">
-			<input type="text" name="fileName2" value="${fileName2}" style="display:none"><button type="submit">下载</button>
-			
-			</form>
-		</c:if>  --%>
-		<%-- <c:if test="${status.count%2!=0}">                                           <!-- background-color:#00ff7f; -->
+<div class="container" style="padding-top:80px;">	
+<table class="table table-striped" >
+  <caption>文件下载列表</caption>
+  <thead>
+    <tr>
+      <th style="text-align: center">文件名称</th>
+      <th></th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${list }" var="fileName2" varStatus="status">
+    <tr>
+      <td><ul><a onClick="return false;" href="upload/${fileName2}" ><img name="fileTypeName" alt="${fileName2}" src="upload/${fileName2}"/></ul></a></td>
+      <td></td>
+      <td>	<form action="download2" method="get">
+			<input style="display:none" type="text" name="fileName2" value="${fileName2}">
+			<button type="submit" class="btn btn-primary">下载</button>
+		</form> </td>
 	
-			<div class="fileShow" style="background-color:#00E5EE; "><a onClick="myTestFileType()" href="upload/${fileName2}" style="text-decoration:none;color:snow;"><img alt="${fileName2}" src="upload/${fileName2}"></a><li class="li"></li></div>
-		
-		</c:if> --%>
-		<div class="fileShow" style="background-color:#00E5EE; "><a onClick="return false;" href="upload/${fileName2}" style="text-decoration:none;color:snow;" ><img name="fileTypeName" alt="${fileName2}" src="upload/${fileName2}"></a><li class="li"></li></div>
-		<form action="download2" method="get">
-			<input type="text" name="fileName2" value="${fileName2}" style="display:none"><div ><button type="submit" style="width:200px;background:#CD8C95;">下载</button></div>
-			
-		</form> 
-		<%-- <form  action="checkFileType" method="get">
-			<input   type="text" name="fileName3" value="${fileName2}" style="display:none"><button onClick="myTestFileType()">预览</button>
-		</form>
-		 --%>
+    </tr>
+     </c:forEach>
+  </tbody>
+</table>
+</div>
 	
-	</ul>	           
-	 </c:forEach>
+	
+	
+	
+	<div>
+  
+	
 	 </div>
-	 <div style=" width:1600px;height:230px; border:0px;background:#00BFFF; margin-top:-19px;float:left;">   
-	 <div id="menu_left_top" style="margin-top:0px;" ><span style=" font-size: 20px;text-align:center;display:block;line-height:50px;"><a href="backFisrtWeb" style="text-decoration:none;color:snow;">返回首页</a></span></div>
-	</div>
 	<%-- <font color="red">${requestScope.fileType}</font>	 --%>
 </body>
 </html>

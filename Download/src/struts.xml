@@ -16,7 +16,7 @@
     	</interceptor>
     	</interceptors>
    		<action name="fileUpload" class="cn.test.action.FileUploadAction">
-			<result name="success">/WEB-INF/success2.jsp</result>
+			<!-- <result name="success">/WEB-INF/success2.jsp</result>  -->
 			<result name="input">/WEB-INF/fileUpload.jsp</result>
 			<!-- <interceptor-ref name="fileUpload">
 				<param name="maximumSize">52428800000000</param>
@@ -33,6 +33,9 @@
 			</action> -->
 			<action name="backFisrtWeb" class="cn.test.action.backFisrtWeb">
 				<result name="success">/WEB-INF/fileUpload.jsp</result>
+			</action>
+			<action name="backLoginWeb" class="cn.test.action.backLoginWeb">
+				<result name="success">/WEB-INF/login.jsp</result>
 			</action>	
 		<!-- 	<action name="checkFileType" class="cn.test.action.CheckFileType">
 				<result name="success">/WEB-INF/fileUploadResult.jsp</result>
@@ -83,7 +86,7 @@
 				<param name="inputName">downloadFile</param> 
 				
 			</result>	  -->
-			 <result name="success">/WEB-INF/success3.jsp</result>
+			 <!-- <result name="success">/WEB-INF/success3.jsp</result> -->
 			
 		</action>
 		

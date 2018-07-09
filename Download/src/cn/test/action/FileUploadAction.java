@@ -69,7 +69,7 @@ public class FileUploadAction extends ActionSupport
     System.out.println("上传的文件名是：" + getUploadFileFileName());
     this.prefix = getUploadFileFileName().substring(getUploadFileFileName().lastIndexOf(".") + 1);
     System.out.println(this.prefix);
-    if ((this.prefix.equals("jpg")) || (this.prefix.equals("png")) || (this.prefix.equals("bmp")) || (this.prefix.equals("gif")))
+    if ((this.prefix.equals("jpg")) || (this.prefix.equals("png")) || (this.prefix.equals("bmp")) || (this.prefix.equals("gif")||(this.prefix.equals("JPG"))))
       this.uploadPath = ServletActionContext.getServletContext().getRealPath("/wallpaper");
     else {
       this.uploadPath = ServletActionContext.getServletContext().getRealPath("/upload");
