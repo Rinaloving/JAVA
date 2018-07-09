@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">印象 · 记忆</a>
+          <a class="navbar-brand" href="#">印象 · 神隐</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form  action="loginAction" method="post" class="navbar-form navbar-right">
